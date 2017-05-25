@@ -39,6 +39,8 @@
 	</dependencies>
 
 	<build>
+		<!-- name of final .war file -->
+		<finalName>hello-spring</finalName>
 		<plugins>
 		<!-- .... other plugins ...-->
 

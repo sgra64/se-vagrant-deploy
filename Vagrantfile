@@ -21,7 +21,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "file", source: "tomcat.conf/tomcat.conf",
                               destination: "/tmp/tomcat.conf"
   config.vm.provision "file", source: "tomcat.conf/webapps.manager.META-INF.context.xml",
-                              destination: "webapps.manager.META-INF.context.xml"
+                              destination: "/tmp/webapps.manager.META-INF.context.xml"
   config.vm.provision "file", source: "tomcat.conf/tomcat_ctrl",
                               destination: "/tmp/tomcat_ctrl"
 

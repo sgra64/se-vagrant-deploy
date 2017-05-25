@@ -27,11 +27,13 @@ chgrp -R tomcat /opt/tomcat/
 chmod g+rwx /opt/tomcat/conf
 chmod g+r /opt/tomcat/conf/*
 #wget -q https://gist.githubusercontent.com/adeubank/1a8db1958578146120a2/raw/c796a8881d95dd2cbe47d1ffee8246463ec2c7a1/tomcat.conf
-mv /tmp/tomcat.conf /etc/init/
-mv /tmp/webapps.manager.META-INF.context.xml /opt/tomcat/webapps/manager/META-INF/context.xml
-sed -i "s#</tomcat-users>#  <user username=\\"admin\\" password=\\"admin\\" roles=\\"manager-gui,admin-gui\\"/>\\n</tomcat-users>#" /opt/tomcat/conf/tomcat-users.xml
+#mv /tmp/tomcat.conf /etc/init/
+#mv /tmp/webapps.manager.META-INF.context.xml /opt/tomcat/webapps/manager/META-INF/context.xml
+tr -d '\r' < /tmp/tomcat.conf > /etc/init/tomcat.conf
+tr -d '\r' < /tmp/webapps.manager.META-INF.context.xml > /opt/tomcat/webapps/manager/META-INF/context.xml
+sed -i 's#</tomcat-users>#  <user username="admin" password="admin" roles="manager-gui,admin-gui"/>\\n</tomcat-users>#' /opt/tomcat/conf/tomcat-users.xml
 
-mv /tmp/tomcat_ctrl /etc/init.d
+tr -d '\r' < /tmp/tomcat_ctrl > /etc/init.d/tomcat_ctrl
 chmod +x /etc/init.d/tomcat_ctrl
 ln -s /etc/init.d/tomcat_ctrl /etc/rc0.d/K08tomcat
 ln -s /etc/init.d/tomcat_ctrl /etc/rc6.d/K08tomcat
