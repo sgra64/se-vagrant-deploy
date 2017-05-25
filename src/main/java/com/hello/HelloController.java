@@ -1,4 +1,4 @@
-package com.test;
+package com.hello;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -13,4 +13,9 @@ public class HelloController {
 		model.addAttribute("message", "Spring MVC Hello World");
 		return "hello";
 	}
+
+	public String concatenate( String s1, String s2 ) {
+		return s1 + s2;
+	}
+
 }
